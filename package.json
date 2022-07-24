@@ -18,7 +18,10 @@
     "url": "https://github.com/ciddt/FunixNodejsLab/issues"
   },
   "homepage": "https://github.com/ciddt/FunixNodejsLab#readme",
-  "dependencies": {
+  "devDependencies": {
     "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
   }
 }
