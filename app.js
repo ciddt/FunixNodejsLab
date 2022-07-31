@@ -13,6 +13,4 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(adminRouters);
 app.use(shopRouters);
 
-const server = http.createServer(app);
-
-server.listen(3000);
+app.listen(3000);
