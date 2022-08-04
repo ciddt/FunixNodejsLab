@@ -32,6 +32,7 @@ exports.getIndex = (req, res, next) => {
   });
 };
 
+
 exports.getCart = (req, res, next) => {
   Cart.getCart(cart => {
     Product.fetchAll(products => {
@@ -51,7 +52,7 @@ exports.getCart = (req, res, next) => {
       });
     });
   });
-};
+}
 
 exports.postCart = (req, res, next) => {
   const prodId = req.body.productId;
