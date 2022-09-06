@@ -3,10 +3,11 @@ const MongoClient = mongodb.MongoClient;
 
 const mongoConnect = callback => {
   MongoClient.connect(
-    "mongodb+srv://linhthuynguyen2589:239923ngu@funixnjs101xcluster.wbywvok.mongodb.net/?retryWrites=true&w=majority"
+    'mongodb+srv://linhthuynguyen2589:239923ngu@funixnjs101xcluster.wbywvok.mongodb.net/?retryWrites=true&w=majority'
   )
-    .then(result => {
+    .then(client => {
       console.log('Connected!');
+      callback(client);
     })
     .catch(err => console.log(err));
 }
