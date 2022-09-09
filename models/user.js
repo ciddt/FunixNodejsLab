@@ -1,4 +1,5 @@
 const mongodb = require("mongodb");
+const { GREEK } = require("mysql2/lib/constants/charsets");
 const getDb = require("../util/database").getDb;
 
 const ObjectId = mongodb.ObjectId;
@@ -61,6 +62,19 @@ class User {
           }
         })
       })
+  }
+
+  deleteItemFromCart(productId) {
+    const updatedCartItems = this.cart.items.filter(item => {
+      return item.productId.toString() !== productId.toString();
+    });
+    const db = getDb();
+    return db
+      .collection('users')
+      .updateOne(
+        {_id: new ObjectId(this._id)},
+        {$set: {cart: {items: updatedCartItems}}}
+      );
   }
 
   static findById(userId) {
