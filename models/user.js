@@ -1,3 +1,28 @@
+const mongoose = require("mongoose");
+
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
+  name: {
+    type: String,
+    require: true,
+  },
+  email: {
+    type: String,
+    require: true,
+  },
+  cart: {
+    items: [
+      {
+        productId: { type: Schema.Types.ObjectId, require: true },
+        quantity: { type: Number, require: true },
+      },
+    ],
+  },
+});
+
+module.exports = mongoose.model('User', userSchema);
+
 // const mongodb = require("mongodb");
 // const { GREEK } = require("mysql2/lib/constants/charsets");
 // const { get } = require("../routes/admin");
@@ -29,7 +54,7 @@
 //       updatedCartItems[cartProductIndex].quantity = newQuantity;
 //     } else {
 //       updatedCartItems.push({
-//         productId: new ObjectId(product._id), 
+//         productId: new ObjectId(product._id),
 //         quantity: newQuantity
 //       })
 //     }
